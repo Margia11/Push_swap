@@ -6,7 +6,7 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 10:29:52 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/24 15:15:45 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/24 17:15:44 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,5 @@ int			push_swap_atoi(char *str, int *stack);
 void		size3(t_stack *stack);
 void		push_swap(char **argv);
 int			sort(t_stack *stack, int size);
+void		porcodio_sorting(t_stack *stack, int len);
 #endif
