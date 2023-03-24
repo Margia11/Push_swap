@@ -6,62 +6,59 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 13:05:19 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/21 16:05:40 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/24 15:43:25 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int arc, char **args)
+void	push_swap(char **argv)
 {
-	t_stack	*stack;
+	t_stack		*stack;
+	int			size;
+	int			i;
 
-	if (arc == 1)
-		return (0);
-	stack = malloc(sizeof(t_stack));
-	if (!stack)
-		return (0);
-	if (check_args(args, arc - 1) == -1)
-		ft_free(stack);
-	stack->argc = arc - 1;
-	if (arg_to_int(stack, arc , args) == -1)
+	i = -1;
+	size = stack_strlen(argv);
+	write(1, "1\n", 2);
+	stack->stack_a = malloc(size * sizeof(int));
+	write(1, "2\n", 2);
+	if (!stack->stack_a)
+		return ;
+		write(1, "3\n", 2);
+	stack->l_stack_a = size;
+	write(1, "4\n", 3);
+	stack->stack_b = malloc(size * sizeof(int));
+	write(1, "5\n", 1);
+	if (!stack->stack_b)
 	{
-		ft_free(stack);
-		return (0);
+		write(1, "6\n", 2);
+		free(stack->stack_a);
+		return ;
+		write(1, "7\n", 2);
 	}
-	if (check_order(stack) == -1)
-		ft_free(stack);
-	if (ft_choose_size(arc, stack) == -1)
-		ft_free(stack);
-	return (0);
+	stack->l_stack_b = 0;
+	while (++i < size)
+		stack->stack_a[i] = push_swap_atoi(argv[i], stack->stack_a);
+	check_doubles(stack->stack_a, size);
+	write(1, "8\n", 2);
+	sort(stack, size);
+	write(1, "9\n", 2);
+	free(stack->stack_a);
+	free(stack->stack_b);
 }
 
-int	ft_choose_size(int arc, t_stack *stack)
+int	main(int argc, char **argv)
 {
-	if (check_same_nums(stack) == -1)
-		return (-1);
-	else
+	if (argc > 1)
 	{
-		if (arc == 3 || arc == 4)
-			size3(stack->stack_a, stack);
-	}
-	return (0);
-}
-
-int	arg_to_int(t_stack *stack, int arc, char **args)
-{
-	int	i;
-
-	i = 0;
-	while (i != arc - 1)
-	{
-		if (check_num(args[i + 1]) == -1)
-			return (-1);
-		stack->stack_a[i] = ft_atoi(args[i + 1]);
-		if (stack->atoierror == 1)
-			return (-1);
-		stack->sp[i] = ft_atoi(args[i + 1]);
-		i++;
+		argv++;
+		if (argc == 2)
+			argv = ft_split(*argv, ' ');
+		write(1, "0\n", 2);
+		push_swap(argv);
+		write(1, "00\n", 3);
+		return (0);
 	}
 	return (0);
 }

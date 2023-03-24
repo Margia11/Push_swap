@@ -6,7 +6,7 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 10:14:19 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/21 15:19:29 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/24 15:14:23 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ra(t_stack *stack)
 	int	i;
 	int	tmp;
 
+	if (stack->l_stack_a == 0 || stack->l_stack_a == 1)
+		return ;
 	tmp = stack->stack_a[0];
 	i = 0;
 	while (i <= stack->current_a - 1)
@@ -33,6 +35,8 @@ void	rb(t_stack *stack)
 	int	i;
 	int	tmp;
 
+	if (stack->l_stack_b == 0 || stack->l_stack_b == 1)
+		return ;
 	tmp = stack->stack_b[0];
 	i = 0;
 	while (i <= stack->current_b - 1)
@@ -49,6 +53,9 @@ void	rr(t_stack *stack)
 	int	i;
 	int	tmp;
 
+	if (stack->l_stack_a == 0 || stack->l_stack_a == 1
+		|| (stack->l_stack_b == 0 || stack->l_stack_b == 1))
+		return ;
 	tmp = stack->stack_a[0];
 	i = 0;
 	while (i <= stack->current_a - 1)

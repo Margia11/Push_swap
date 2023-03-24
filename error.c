@@ -6,17 +6,15 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 13:45:29 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/16 13:48:15 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/24 12:52:02 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_error(t_stack *stack)
+void	ft_error(int *stack)
 {
-	ft_printf("Error\n");
-	free(stack->stack_a);
-	free(stack->stack_b);
 	free(stack);
-	exit(0);
+	ft_printf("Error\n");
+	exit (1);
 }

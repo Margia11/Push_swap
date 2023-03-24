@@ -6,7 +6,7 @@
 #    By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/16 14:41:45 by amargiac          #+#    #+#              #
-#    Updated: 2023/03/21 15:36:48 by amargiac         ###   ########.fr        #
+#    Updated: 2023/03/24 15:23:32 by amargiac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,14 +14,14 @@ NAME = push_swap
 
 SRC_1 = pushswap.c
 
-SRC_2 = ft_free.c error.c sort3.c checks.c move/push.c move/reverse.c \
-		move/rotate.c move/swap.c
+SRC_2 = error.c checks.c move/push.c move/reverse.c move/rotate.c move/swap.c \
+		sort.c
 
 OBJ_1 = $(SRC_1.c=.o)
 OBJ_1 = $(SRC_2.c=.o)
 
 CC = gcc
-FLAG = -Wall -Werror -Wextra
+FLAG = -Wall -Werror -Wextra -g
 
 FTPRINTF = ft_printf/
 LIBFT := libft/
