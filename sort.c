@@ -6,27 +6,13 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 12:17:15 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/24 17:15:18 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/28 17:28:32 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	sort(t_stack *stack, int size)
-{
-	if (check_sorted(stack->stack_a, stack->l_stack_a, 0) == 0)
-	{
-		if (size == 2)
-			sa(stack);
-		else if (size == 3)
-			size3(stack);
-		else
-			porcodio_sorting(stack, size);
-	}
-	return (0);
-}
-
-void	size3(t_stack *stack)
+//ordina il gruppo di 3 numeri sullo stack a(sort3)
+void	size3_stack_a(t_stack *stack)
 {
 	if (stack->stack_a[0] < stack->stack_a[1] && stack->stack_a[0] < \
 	stack->stack_a[2] && stack->stack_a[1] < stack->stack_a[2])
@@ -53,9 +39,51 @@ void	size3(t_stack *stack)
 		sa(stack);
 	}
 }
-
-void	porcodio_sorting(t_stack *stack, int len)
+// La funzione attraversa l'array in cerca del minimo elemento e lo scambia con il primo elemento non ancora ordinato
+// poi cerca il minimo tra gli elementi non ancora ordinati e lo scambia con il secondo elemento non ancora ordinato, e così via
+// Questo rende più efficiente l'algoritmo in quanto il pivot scelto sarà più vicino al valore mediano dell'intero array
+void	temporary_sort(int *stack_tmp, int size)
 {
-	if (len == 3 && stack->l_stack_a == 3)
-		size3(stack);
+	int	i;
+	int	j;
+	int	tmp;
+
+	i = 0;
+	while (i < size)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if (stack_tmp[i] > stack_tmp[j])
+			{
+				tmp = stack_tmp[i];
+				stack_tmp[i] = stack_tmp[j];
+				stack_tmp[j] = tmp;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+int	sort(t_stack *stack, int size)
+{
+	if (check_sorted(stack->stack_a, stack->l_stack_a, 0) == 0)
+	{
+		if (size == 2)
+			sa(stack);
+		else if (size == 3)
+			size3_stack_a(stack);
+		else
+			quicksort_a(stack, size, 0);
+	}
+	return (0);
+}
+int	ft_push(t_stack *stack, int len, int push)
+{
+	if (push == 0)
+		pb(stack);
+	else
+		pa(stack);
+	len--;
+	return (len);
 }
