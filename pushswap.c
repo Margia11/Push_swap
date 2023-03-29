@@ -6,7 +6,7 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 13:05:19 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/27 11:31:32 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/29 17:42:35 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	push_swap(char **argv)
 {
-	t_stack		stack;
+	t_stack	stack;
 	int			size;
 	int			i;
 
@@ -45,7 +45,7 @@ int	main(int argc, char **argv)
 	{
 		argv++;
 		if (argc == 2)
-	 	 	argv = ft_split(*argv, ' ');
+			argv = ft_split(*argv, ' ');
 		push_swap(argv);
 		return (0);
 	}

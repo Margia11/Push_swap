@@ -6,7 +6,7 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 11:40:19 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/28 17:27:11 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/29 16:52:22 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,22 @@ void	quicksort_stacks(t_stack *stack, int len)
 	else if (len == 2)
 	{
 		if (stack->stack_a[0] > stack->stack_a[1])
-			sa(stack);
+			sa(stack, 0);
 	}
 	else if (len == 3)
 	{
-		while(len != 3 || !(stack->stack_a[0] < stack->stack_a[1] &&
-		stack->stack_a[1] < stack->stack_a[2]))
+		while (len != 3 || !(stack->stack_a[0] < stack->stack_a[1]
+				&& stack->stack_a[1] < stack->stack_a[2]))
 		{
 			if (len == 3 && stack->stack_a[0] > stack->stack_a[1] && stack->stack_a[2])
-				sa(stack);
+				sa(stack, 0);
 			else if (len == 3 && !(stack->stack_a[2] > stack->stack_a[0]
 					&& stack->stack_a[2] > stack->stack_a[1]))
 				len = ft_push(stack, len, 0);
 			else if (stack->stack_a[0] > stack->stack_a[1])
-				sa(stack);
+				sa(stack, 0);
 			else if (len++)
-				pa(stack);
+				pa(stack, 0);
 		}
 	}
 }
@@ -59,38 +59,38 @@ int	mid_number(int *pivot, int *stack, int size)
 	free(tmp_stack);
 	return (1);
 }
-//questa funzione mi serve per ordinare una porzione di numeri nello stack b
-int	sort_three_b(t_stack *stack, int len)
+// effettua l'ordinamento della stack_b quando la lunghezza è uguale a 3
+int	sort_3_b(t_stack *stack, int len)
 {
 	if (len == 1)
-		pa(stack);
+		pa(stack, 0);
 	else if (len == 2)
 	{
 		if (stack->stack_b[0] < stack->stack_b[1])
-			sb(stack);
+			sb(stack, 0);
 		while (len--)
-			pa(stack);
+			pa(stack, 0);
 	}
 	else if (len == 3)
 	{
 		while (len || !(stack->stack_a[0] < stack->stack_a[1] && stack->stack_a[1] < stack->stack_a[2]))
 		{
 			if (len == 1 && stack->stack_a[0] > stack->stack_a[1])
-				sa(stack);
+				sa(stack, 0);
 			else if (len == 1 || (len >= 2 && stack->stack_b[0] > stack->stack_b[1])
 				|| (len == 3 && stack->stack_b[0] > stack->stack_b[2]))
 				len = ft_push(stack, len, 1);
 			else
-				sb(stack);
+				sb(stack, 0);
 		}
 	}
 	return (0);
 }
 //implementa l'algoritmo Quicksort per ordinare gli elementi dell'array stack_a in ordine crescente
-void	quicksort_a(t_stack *stack, int len, int count_r)
+int	quicksort_a(t_stack *stack, int len, int count_r)
 {
 	int	pivot;
-	int numbers;
+	int	numbers;
 
 	if (check_sorted(stack->stack_a, len, 0) == 1)
 		return (1);
@@ -99,13 +99,48 @@ void	quicksort_a(t_stack *stack, int len, int count_r)
 	{
 		quicksort_stacks(stack, len);
 		return (1);
+	}
 	if (!mid_number(&pivot, stack->stack_a, len))
-		return(0);
+		return (0);
 	while (len != numbers / 2 + numbers % 2)
 	{
 		if (stack->stack_a[0] < pivot && (len--))
-			pb(stack);
+			pb(stack, 0);
 		else if (++count_r)
-			ra(stack);
+			ra(stack, 0);
 	}
+	while (numbers / 2 + numbers % 2 != stack->l_stack_a && count_r--)//controlla se il numero di elementi nella pila A è pari o dispari.
+		rra(stack, 0);//												 Se è pari, il numero di elementi che devono essere spostati nella pila B è la metà del numero totale di elementi.
+	return (quicksort_a(stack, numbers / 2 + numbers % 2, 0)//       Se è dispari, il numero di elementi che devono essere spostati nella pila B è la metà del numero totale di elementi più uno.
+		&& quicksort_b(stack, numbers / 2, 0));// controlla il numero di elementi nella pila A, sposta una parte degli elementi nella pila B, ordina le due stack con il quicksort
+	return (1);
+}
+
+int	quicksort_b(t_stack *stack, int len, int count_r)
+{
+	int	numbers;
+	int	pivot;
+
+	if (check_sorted(stack->stack_b, len, 1) == 1)
+		while (len--)
+			pa(stack, 0);
+	if (len <= 3)
+	{
+		sort_3_b(stack, len);
+		return (1);
+	}
+	numbers = len;
+	if (!mid_number(&pivot, stack->stack_b, len))
+		return (0);
+	while (len != numbers / 2)
+	{
+		if (stack->stack_b[0] >= pivot && len--)
+			pa(stack, 0);
+		else if (++count_r)
+			rb(stack, 0);
+	}
+	while (numbers / 2 != stack->l_stack_b && count_r--)
+		rrb(stack, 0);
+	return (quicksort_a(stack, numbers / 2 + numbers % 2, 0)
+		&& quicksort_b(stack, numbers / 2, 0));
 }

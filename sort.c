@@ -6,7 +6,7 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 12:17:15 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/28 17:28:32 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/29 17:34:25 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,23 @@ void	size3_stack_a(t_stack *stack)
 	else if (stack->stack_a[0] < stack->stack_a[1] && stack->stack_a[0] < \
 	stack->stack_a[2] && stack->stack_a[1] > stack->stack_a[2])
 	{
-		rra(stack);
-		sa(stack);
+		rra(stack, 0);
+		sa(stack, 0);
 	}
 	else if (stack->stack_a[0] > stack->stack_a[1] && stack->stack_a[0] < \
 	stack->stack_a[2] && stack->stack_a[1] < stack->stack_a[2])
-		sa(stack);
+		sa(stack, 0);
 	else if (stack->stack_a[0] < stack->stack_a[1] && stack->stack_a[0] > \
 	stack->stack_a[2] && stack->stack_a[1] > stack->stack_a[2])
-		rra(stack);
+		rra(stack, 0);
 	else if (stack->stack_a[1] < stack->stack_a[2] && stack->stack_a[0] > \
 	stack->stack_a[1] && stack->stack_a[0] > stack->stack_a[2])
-		ra(stack);
+		ra(stack, 0);
 	else if (stack->stack_a[1] > stack->stack_a[2] && stack->stack_a[0] > \
 	stack->stack_a[1] && stack->stack_a[0] > stack->stack_a[2])
 	{
-		ra(stack);
-		sa(stack);
+		ra(stack, 0);
+		sa(stack, 0);
 	}
 }
 // La funzione attraversa l'array in cerca del minimo elemento e lo scambia con il primo elemento non ancora ordinato
@@ -70,7 +70,7 @@ int	sort(t_stack *stack, int size)
 	if (check_sorted(stack->stack_a, stack->l_stack_a, 0) == 0)
 	{
 		if (size == 2)
-			sa(stack);
+			sa(stack, 0);
 		else if (size == 3)
 			size3_stack_a(stack);
 		else
@@ -81,9 +81,9 @@ int	sort(t_stack *stack, int size)
 int	ft_push(t_stack *stack, int len, int push)
 {
 	if (push == 0)
-		pb(stack);
+		pb(stack, 0);
 	else
-		pa(stack);
+		pa(stack, 0);
 	len--;
 	return (len);
 }
