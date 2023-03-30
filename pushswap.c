@@ -6,7 +6,7 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 13:05:19 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/30 10:31:50 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/30 12:12:16 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ void	push_swap(char **argv)
 		stack.stack_a[i] = push_swap_atoi(argv[i], stack.stack_a);
 	check_doubles(stack.stack_a, size);
 	sort(&stack, size);
+	i = 0;
+	while (i < stack.l_stack_a)
+	{
+		ft_printf("%d\n", stack.stack_a[i]);
+		i++;
+	}
 	free(stack.stack_a);
 	free(stack.stack_b);
 }

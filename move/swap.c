@@ -6,7 +6,7 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 10:05:11 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/30 10:53:46 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/30 15:21:37 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	sb(t_stack *stack, int flag)
 {
 	int	tmp;
 
-	if (stack->l_stack_b == 0 || stack->l_stack_a == 1)
+	if (stack->l_stack_b == 0 || stack->l_stack_b == 1)
 		return ;
 	tmp = 0;
 	tmp = stack->stack_b[0];
@@ -42,8 +42,18 @@ void	sb(t_stack *stack, int flag)
 
 void	ss(t_stack *stack, int flag)
 {
-	sa(stack, 1);
-	sb(stack, 1);
+	int	tmp;
+
+	if (stack->l_stack_a == 0 || stack->l_stack_a == 1
+		|| (stack->l_stack_b == 0 || stack->l_stack_b == 1))
+		return ;
+	tmp = 0;
+	tmp = stack->stack_a[0];
+	stack->stack_a[0] = stack->stack_a[1];
+	stack->stack_a[1] = tmp;
+	tmp = stack->stack_b[0];
+	stack->stack_b[0] = stack->stack_b[1];
+	stack->stack_b[1] = tmp;
 	if (flag == 0)
 		ft_printf("ss\n");
 }

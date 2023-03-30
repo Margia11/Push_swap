@@ -6,12 +6,12 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 11:40:19 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/30 11:12:41 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/30 11:45:28 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-//La funzione viene utilizzata per ordinare tre numeri sullo stack A o su entrambi gli stack A e B.
+
 void	quicksort_stacks(t_stack *stack, int len)
 {
 	if (len == 3 && stack->l_stack_a == 3)
@@ -26,7 +26,8 @@ void	quicksort_stacks(t_stack *stack, int len)
 		while (len != 3 || !(stack->stack_a[0] < stack->stack_a[1]
 				&& stack->stack_a[1] < stack->stack_a[2]))
 		{
-			if (len == 3 && stack->stack_a[0] > stack->stack_a[1] && stack->stack_a[2])
+			if (len == 3 && stack->stack_a[0] > stack->stack_a[1]
+				&& stack->stack_a[2])
 				sa(stack, 0);
 			else if (len == 3 && !(stack->stack_a[2] > stack->stack_a[0]
 					&& stack->stack_a[2] > stack->stack_a[1]))
@@ -38,8 +39,7 @@ void	quicksort_stacks(t_stack *stack, int len)
 		}
 	}
 }
-//la funzione la utilizzo per calcolare il pivot(numero random) che in questo caso e'stack/2 e mi servira'per dividere gli stack
-// infatti lo salvo da parte e gli elementi minori li pusho in a mentre quelli maggiori in b
+
 int	mid_number(int *pivot, int *stack, int size)
 {
 	int		*tmp_stack;
@@ -59,7 +59,7 @@ int	mid_number(int *pivot, int *stack, int size)
 	free(tmp_stack);
 	return (1);
 }
-// effettua l'ordinamento della stack_b quando la lunghezza è uguale a 3
+
 int	sort_3_b(t_stack *stack, int len)
 {
 	if (len == 1)
@@ -73,11 +73,13 @@ int	sort_3_b(t_stack *stack, int len)
 	}
 	else if (len == 3)
 	{
-		while (len || !(stack->stack_a[0] < stack->stack_a[1] && stack->stack_a[1] < stack->stack_a[2]))
+		while (len || !(stack->stack_a[0] < stack->stack_a[1]
+				&& stack->stack_a[1] < stack->stack_a[2]))
 		{
 			if (len == 1 && stack->stack_a[0] > stack->stack_a[1])
 				sa(stack, 0);
-			else if (len == 1 || (len >= 2 && stack->stack_b[0] > stack->stack_b[1])
+			else if (len == 1 || (len >= 2 && stack->stack_b[0]
+					> stack->stack_b[1])
 				|| (len == 3 && stack->stack_b[0] > stack->stack_b[2]))
 				len = ft_push(stack, len, 1);
 			else
@@ -86,7 +88,7 @@ int	sort_3_b(t_stack *stack, int len)
 	}
 	return (0);
 }
-//implementa l'algoritmo Quicksort per ordinare gli elementi dell'array stack_a in ordine crescente
+
 int	quicksort_a(t_stack *stack, int len, int count_r)
 {
 	int	pivot;
@@ -109,12 +111,13 @@ int	quicksort_a(t_stack *stack, int len, int count_r)
 		else if (++count_r)
 			ra(stack, 0);
 	}
-	while (numbers / 2 + numbers % 2 != stack->l_stack_a && count_r--)//controlla se il numero di elementi nella pila A è pari o dispari.
-		rra(stack, 0);//												 Se è pari, il numero di elementi che devono essere spostati nella pila B è la metà del numero totale di elementi.
-	return (quicksort_a(stack, numbers / 2 + numbers % 2, 0)//       Se è dispari, il numero di elementi che devono essere spostati nella pila B è la metà del numero totale di elementi più uno.
-		&& quicksort_b(stack, numbers / 2, 0));// controlla il numero di elementi nella pila A, sposta una parte degli elementi nella pila B, ordina le due stack con il quicksort
+	while (numbers / 2 + numbers % 2 != stack->l_stack_a && count_r--)
+		rra(stack, 0);
+	return (quicksort_a(stack, numbers / 2 + numbers % 2, 0)
+		&& quicksort_b(stack, numbers / 2, 0));
 	return (1);
 }
+
 int	quicksort_b(t_stack *stack, int len, int count_r)
 {
 	int	pivot;
@@ -139,7 +142,7 @@ int	quicksort_b(t_stack *stack, int len, int count_r)
 			rb(stack, 0);
 	}
 	while (numbers / 2 != stack->l_stack_b && count_r--)
-			rb(stack, 0);
+		rb(stack, 0);
 	return (quicksort_a(stack, numbers / 2 + numbers % 2, 0)
 		&& quicksort_b(stack, numbers / 2, 0));
 }

@@ -6,13 +6,12 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 14:26:27 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/30 10:26:47 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/30 11:43:13 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// calcolo lunghezza stack
 int	stack_strlen(char **argv)
 {
 	int	i;
@@ -25,7 +24,7 @@ int	stack_strlen(char **argv)
 	}
 	return (i);
 }
-// check per vedere se lo stack e'ordinato in modo crescente o decrescente
+
 int	check_sorted(int *stack, int size, int order)
 {
 	int	i;
@@ -53,7 +52,7 @@ int	check_sorted(int *stack, int size, int order)
 		return (1);
 	}
 }
-// check per vedere se ci sono numeri doppi
+
 void	check_doubles(int *stack, int size)
 {
 	int	i;
@@ -73,7 +72,7 @@ void	check_doubles(int *stack, int size)
 		j = i + 1;
 	}
 }
-// atoi modificato
+
 int	push_swap_atoi(char *str, int *stack)
 {
 	unsigned int		i;
@@ -101,4 +100,3 @@ int	push_swap_atoi(char *str, int *stack)
 		ft_error(stack);
 	return (number * sign);
 }
-

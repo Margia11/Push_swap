@@ -6,12 +6,12 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 12:17:15 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/30 11:10:06 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/30 11:43:49 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-//ordina il gruppo di 3 numeri sullo stack a(sort3)
+
 void	size3_stack_a(t_stack *stack)
 {
 	if (stack->stack_a[0] < stack->stack_a[1] && stack->stack_a[0] < \
@@ -39,9 +39,7 @@ void	size3_stack_a(t_stack *stack)
 		sa(stack, 0);
 	}
 }
-// La funzione attraversa l'array in cerca del minimo elemento e lo scambia con il primo elemento non ancora ordinato
-// poi cerca il minimo tra gli elementi non ancora ordinati e lo scambia con il secondo elemento non ancora ordinato, e così via
-// Questo rende più efficiente l'algoritmo in quanto il pivot scelto sarà più vicino al valore mediano dell'intero array
+
 void	temporary_sort(int *stack_tmp, int size)
 {
 	int	i;
@@ -65,7 +63,7 @@ void	temporary_sort(int *stack_tmp, int size)
 		i++;
 	}
 }
-//sort generale
+
 int	sort(t_stack *stack, int size)
 {
 	if (check_sorted(stack->stack_a, stack->l_stack_a, 0) == 0)
@@ -79,7 +77,7 @@ int	sort(t_stack *stack, int size)
 	}
 	return (0);
 }
-//decido il push in base alla flag
+
 int	ft_push(t_stack *stack, int len, int push)
 {
 	if (push == 0)
