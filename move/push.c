@@ -6,11 +6,11 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 10:04:02 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/29 15:49:34 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/30 10:53:31 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/Users/amargiac/Desktop/push_swap/push_swap.h"
+#include "/Users/amargiac/Desktop/Push_swap/push_swap.h"
 
 void	pb(t_stack *stack, int flag)
 {
@@ -33,6 +33,7 @@ void	pb(t_stack *stack, int flag)
 	else
 		return ;
 }
+
 void	pa(t_stack *stack, int flag)
 {
 	int	i;
@@ -43,7 +44,7 @@ void	pa(t_stack *stack, int flag)
 		i = stack->l_stack_a;
 		while (--i > 0)
 			stack->stack_a[i] = stack->stack_a[i - 1];
-		stack->stack_a[0] = stack->stack_a[0];
+		stack->stack_a[0] = stack->stack_b[0];
 		i = -1;
 		stack->l_stack_b--;
 		while (++i < stack->l_stack_b)

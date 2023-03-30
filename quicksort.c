@@ -6,7 +6,7 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 11:40:19 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/29 16:52:22 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/30 11:12:41 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,11 +115,10 @@ int	quicksort_a(t_stack *stack, int len, int count_r)
 		&& quicksort_b(stack, numbers / 2, 0));// controlla il numero di elementi nella pila A, sposta una parte degli elementi nella pila B, ordina le due stack con il quicksort
 	return (1);
 }
-
 int	quicksort_b(t_stack *stack, int len, int count_r)
 {
-	int	numbers;
 	int	pivot;
+	int	numbers;
 
 	if (check_sorted(stack->stack_b, len, 1) == 1)
 		while (len--)
@@ -140,7 +139,7 @@ int	quicksort_b(t_stack *stack, int len, int count_r)
 			rb(stack, 0);
 	}
 	while (numbers / 2 != stack->l_stack_b && count_r--)
-		rrb(stack, 0);
+			rb(stack, 0);
 	return (quicksort_a(stack, numbers / 2 + numbers % 2, 0)
 		&& quicksort_b(stack, numbers / 2, 0));
 }

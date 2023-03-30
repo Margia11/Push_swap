@@ -6,7 +6,7 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 12:17:15 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/29 17:34:25 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/30 11:10:06 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	temporary_sort(int *stack_tmp, int size)
 		i++;
 	}
 }
+//sort generale
 int	sort(t_stack *stack, int size)
 {
 	if (check_sorted(stack->stack_a, stack->l_stack_a, 0) == 0)
@@ -78,6 +79,7 @@ int	sort(t_stack *stack, int size)
 	}
 	return (0);
 }
+//decido il push in base alla flag
 int	ft_push(t_stack *stack, int len, int push)
 {
 	if (push == 0)

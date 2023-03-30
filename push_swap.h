@@ -6,7 +6,7 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 10:29:52 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/29 15:45:29 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/03/30 10:35:54 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
-# include "./ft_printf/ft_printf.h"
-# include "./libft/libft.h"
+# include "/Users/amargiac/Desktop/Push_swap/ft_printf/ft_printf.h"
+# include "/Users/amargiac/Desktop/Push_swap/libft/libft.h"
 
 
 typedef struct s_stack {
