@@ -6,7 +6,7 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 10:04:02 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/30 15:10:33 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/04/04 10:08:41 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ void	pb(t_stack *stack, int flag)
 		stack->l_stack_b++;
 		i = stack->l_stack_b;
 		while (--i > 0)
-			stack->stack_b[i] = stack->stack_b[i - 1];
-		stack->stack_b[0] = stack->stack_a[0];
+			stack->b[i] = stack->b[i - 1];
+		stack->b[0] = stack->a[0];
 		i = -1;
 		stack->l_stack_a--;
 		while (++i < stack->l_stack_a)
-			stack->stack_a[i] = stack->stack_a[i + 1];
+			stack->a[i] = stack->a[i + 1];
 		if (flag == 0)
 			ft_printf("pb\n");
 	}
@@ -43,12 +43,12 @@ void	pa(t_stack *stack, int flag)
 		stack->l_stack_a++;
 		i = stack->l_stack_a;
 		while (--i > 0)
-			stack->stack_a[i] = stack->stack_a[i - 1];
-		stack->stack_a[0] = stack->stack_b[0];
+			stack->a[i] = stack->a[i - 1];
+		stack->a[0] = stack->b[0];
 		i = -1;
 		stack->l_stack_b--;
 		while (++i < stack->l_stack_b)
-			stack->stack_b[i] = stack->stack_b[i + 1];
+			stack->b[i] = stack->b[i + 1];
 		if (flag == 0)
 			ft_printf("pa\n");
 	}

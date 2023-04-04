@@ -6,11 +6,11 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 13:05:19 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/30 12:12:16 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/04/04 10:09:04 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "/Users/amargiac/Desktop/Push_swap/push_swap.h"
 
 void	push_swap(char **argv)
 {
@@ -20,29 +20,26 @@ void	push_swap(char **argv)
 
 	i = -1;
 	size = stack_strlen(argv);
-	stack.stack_a = malloc(size * sizeof(int));
-	if (!stack.stack_a)
+	stack.a = malloc(size * sizeof(int));
+	if (!stack.a)
 		return ;
 	stack.l_stack_a = size;
-	stack.stack_b = malloc(size * sizeof(int));
-	if (!stack.stack_b)
+	stack.b = malloc(size * sizeof(int));
+	if (!stack.b)
 	{
-		free(stack.stack_a);
+		free(stack.a);
 		return ;
 	}
 	stack.l_stack_b = 0;
 	while (++i < size)
-		stack.stack_a[i] = push_swap_atoi(argv[i], stack.stack_a);
-	check_doubles(stack.stack_a, size);
+		stack.a[i] = push_swap_atoi(argv[i], stack.a);
+	check_doubles(stack.a, size);
 	sort(&stack, size);
-	i = 0;
-	while (i < stack.l_stack_a)
-	{
-		ft_printf("%d\n", stack.stack_a[i]);
-		i++;
-	}
-	free(stack.stack_a);
-	free(stack.stack_b);
+	printf("Numeri ordinati:\n");
+	for (int j = 0; j < size; j++)
+    printf("%d\n", stack.a[j]);
+	free(stack.a);
+	free(stack.b);
 }
 
 int	main(int argc, char **argv)

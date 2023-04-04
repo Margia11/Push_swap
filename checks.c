@@ -6,11 +6,39 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 14:26:27 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/30 11:43:13 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/04/04 10:05:29 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "/Users/amargiac/Desktop/Push_swap/push_swap.h"
+
+int	push_swap_atoi(char *str, int *stack)
+{
+	unsigned int		i;
+	int					sign;
+	unsigned long int	number;
+
+	i = 0;
+	number = 0;
+	sign = 1;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
+		i++;
+	if (str[i] == '-')
+		sign = -1;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	while (str[i])
+	{
+		if (str[i] < '0' || str[i] > '9')
+			ft_error(stack);
+		number = (str[i] - '0') + (number * 10);
+		i++;
+	}
+	if ((number > 2147483648 && sign == -1)
+		|| (number > 2147483647 && sign == 1))
+		ft_error(stack);
+	return (number * sign);
+}
 
 int	stack_strlen(char **argv)
 {
@@ -71,32 +99,4 @@ void	check_doubles(int *stack, int size)
 		i++;
 		j = i + 1;
 	}
-}
-
-int	push_swap_atoi(char *str, int *stack)
-{
-	unsigned int		i;
-	int					sign;
-	unsigned long int	number;
-
-	i = 0;
-	number = 0;
-	sign = 1;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
-		i++;
-	if (str[i] == '-')
-		sign = -1;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while (str[i])
-	{
-		if (str[i] < '0' || str[i] > '9')
-			ft_error(stack);
-		number = (str[i] - '0') + (number * 10);
-		i++;
-	}
-	if ((number > 2147483648 && sign == -1)
-		|| (number > 2147483647 && sign == 1))
-		ft_error(stack);
-	return (number * sign);
 }

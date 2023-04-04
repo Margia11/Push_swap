@@ -6,7 +6,7 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 10:29:52 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/30 11:43:34 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/04/04 10:08:29 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include "/Users/amargiac/Desktop/Push_swap/libft/libft.h"
 
 typedef struct s_stack {
-	int	*stack_a;
-	int	*stack_b;
+	int	*a;
+	int	*b;
 	int	l_stack_a;
 	int	l_stack_b;
 }			t_stack;

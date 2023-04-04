@@ -6,39 +6,11 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 12:17:15 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/30 11:43:49 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/04/04 10:56:27 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-void	size3_stack_a(t_stack *stack)
-{
-	if (stack->stack_a[0] < stack->stack_a[1] && stack->stack_a[0] < \
-	stack->stack_a[2] && stack->stack_a[1] < stack->stack_a[2])
-		return ;
-	else if (stack->stack_a[0] < stack->stack_a[1] && stack->stack_a[0] < \
-	stack->stack_a[2] && stack->stack_a[1] > stack->stack_a[2])
-	{
-		rra(stack, 0);
-		sa(stack, 0);
-	}
-	else if (stack->stack_a[0] > stack->stack_a[1] && stack->stack_a[0] < \
-	stack->stack_a[2] && stack->stack_a[1] < stack->stack_a[2])
-		sa(stack, 0);
-	else if (stack->stack_a[0] < stack->stack_a[1] && stack->stack_a[0] > \
-	stack->stack_a[2] && stack->stack_a[1] > stack->stack_a[2])
-		rra(stack, 0);
-	else if (stack->stack_a[1] < stack->stack_a[2] && stack->stack_a[0] > \
-	stack->stack_a[1] && stack->stack_a[0] > stack->stack_a[2])
-		ra(stack, 0);
-	else if (stack->stack_a[1] > stack->stack_a[2] && stack->stack_a[0] > \
-	stack->stack_a[1] && stack->stack_a[0] > stack->stack_a[2])
-	{
-		ra(stack, 0);
-		sa(stack, 0);
-	}
-}
+#include "/Users/amargiac/Desktop/Push_swap/push_swap.h"
 
 void	temporary_sort(int *stack_tmp, int size)
 {
@@ -64,9 +36,38 @@ void	temporary_sort(int *stack_tmp, int size)
 	}
 }
 
+void	size3_stack_a(t_stack *stack)
+{
+	if (stack->a[0] < stack->a[1] && stack->a[0] < \
+	stack->a[2] && stack->a[1] < stack->a[2])
+		return ;
+	else if (stack->a[0] < stack->a[1] && stack->a[0] < \
+	stack->a[2] && stack->a[1] > stack->a[2])
+	{
+		rra(stack, 0);
+		sa(stack, 0);
+	}
+	else if (stack->a[0] > stack->a[1] && stack->a[0] < \
+	stack->a[2] && stack->a[1] < stack->a[2])
+		sa(stack, 0);
+	else if (stack->a[0] < stack->a[1] && stack->a[0] > \
+	stack->a[2] && stack->a[1] > stack->a[2])
+		rra(stack, 0);
+	else if (stack->a[1] < stack->a[2] && stack->a[0] > \
+	stack->a[1] && stack->a[0] > stack->a[2])
+		ra(stack, 0);
+	else if (stack->a[1] > stack->a[2] && stack->a[0] > \
+	stack->a[1] && stack->a[0] > stack->a[2])
+	{
+		ra(stack, 0);
+		sa(stack, 0);
+	}
+}
+
+
 int	sort(t_stack *stack, int size)
 {
-	if (check_sorted(stack->stack_a, stack->l_stack_a, 0) == 0)
+	if (check_sorted(stack->a, stack->l_stack_a, 0) == 0)
 	{
 		if (size == 2)
 			sa(stack, 0);

@@ -6,11 +6,11 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 11:40:19 by amargiac          #+#    #+#             */
-/*   Updated: 2023/03/30 11:45:28 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/04/04 10:09:07 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "/Users/amargiac/Desktop/Push_swap/push_swap.h"
 
 void	quicksort_stacks(t_stack *stack, int len)
 {
@@ -18,26 +18,52 @@ void	quicksort_stacks(t_stack *stack, int len)
 		size3_stack_a(stack);
 	else if (len == 2)
 	{
-		if (stack->stack_a[0] > stack->stack_a[1])
+		if (stack->a[0] > stack->a[1])
 			sa(stack, 0);
 	}
 	else if (len == 3)
 	{
-		while (len != 3 || !(stack->stack_a[0] < stack->stack_a[1]
-				&& stack->stack_a[1] < stack->stack_a[2]))
+		while (len != 3 || !(stack->a[0] < stack->a[1]
+				&& stack->a[1] < stack->a[2]))
 		{
-			if (len == 3 && stack->stack_a[0] > stack->stack_a[1]
-				&& stack->stack_a[2])
+			if (len == 3 && stack->a[0] > stack->a[1] && stack->a[2])
 				sa(stack, 0);
-			else if (len == 3 && !(stack->stack_a[2] > stack->stack_a[0]
-					&& stack->stack_a[2] > stack->stack_a[1]))
+			else if (len == 3 && !(stack->a[2] > stack->a[0]
+					&& stack->a[2] > stack->a[1]))
 				len = ft_push(stack, len, 0);
-			else if (stack->stack_a[0] > stack->stack_a[1])
+			else if (stack->a[0] > stack->a[1])
 				sa(stack, 0);
 			else if (len++)
 				pa(stack, 0);
 		}
 	}
+}
+
+int	sort_3_b(t_stack *stack, int len)
+{
+	if (len == 1)
+		pa(stack, 0);
+	else if (len == 2)
+	{
+		if (stack->b[0] < stack->b[1])
+			sb(stack, 0);
+		while (len--)
+			pa(stack, 0);
+	}
+	else if (len == 3)
+	{
+		while (len || !(stack->a[0] < stack->a[1] && stack->a[1] < stack->a[2]))
+		{
+			if (len == 1 && stack->a[0] > stack->a[1])
+				sa(stack, 0);
+			else if (len == 1 || (len >= 2 && stack->b[0] > stack->b[1])
+				|| (len == 3 && stack->b[0] > stack->b[2]))
+				len = ft_push(stack, len, 1);
+			else
+				sb(stack, 0);
+		}
+	}
+	return (0);
 }
 
 int	mid_number(int *pivot, int *stack, int size)
@@ -60,41 +86,12 @@ int	mid_number(int *pivot, int *stack, int size)
 	return (1);
 }
 
-int	sort_3_b(t_stack *stack, int len)
-{
-	if (len == 1)
-		pa(stack, 0);
-	else if (len == 2)
-	{
-		if (stack->stack_b[0] < stack->stack_b[1])
-			sb(stack, 0);
-		while (len--)
-			pa(stack, 0);
-	}
-	else if (len == 3)
-	{
-		while (len || !(stack->stack_a[0] < stack->stack_a[1]
-				&& stack->stack_a[1] < stack->stack_a[2]))
-		{
-			if (len == 1 && stack->stack_a[0] > stack->stack_a[1])
-				sa(stack, 0);
-			else if (len == 1 || (len >= 2 && stack->stack_b[0]
-					> stack->stack_b[1])
-				|| (len == 3 && stack->stack_b[0] > stack->stack_b[2]))
-				len = ft_push(stack, len, 1);
-			else
-				sb(stack, 0);
-		}
-	}
-	return (0);
-}
-
 int	quicksort_a(t_stack *stack, int len, int count_r)
 {
 	int	pivot;
 	int	numbers;
 
-	if (check_sorted(stack->stack_a, len, 0) == 1)
+	if (check_sorted(stack->a, len, 0) == 1)
 		return (1);
 	numbers = len;
 	if (len <= 3)
@@ -102,11 +99,11 @@ int	quicksort_a(t_stack *stack, int len, int count_r)
 		quicksort_stacks(stack, len);
 		return (1);
 	}
-	if (!mid_number(&pivot, stack->stack_a, len))
+	if (!mid_number(&pivot, stack->a, len))
 		return (0);
 	while (len != numbers / 2 + numbers % 2)
 	{
-		if (stack->stack_a[0] < pivot && (len--))
+		if (stack->a[0] < pivot && (len--))
 			pb(stack, 0);
 		else if (++count_r)
 			ra(stack, 0);
@@ -123,7 +120,7 @@ int	quicksort_b(t_stack *stack, int len, int count_r)
 	int	pivot;
 	int	numbers;
 
-	if (check_sorted(stack->stack_b, len, 1) == 1)
+	if (check_sorted(stack->b, len, 1) == 1)
 		while (len--)
 			pa(stack, 0);
 	if (len <= 3)
@@ -132,17 +129,17 @@ int	quicksort_b(t_stack *stack, int len, int count_r)
 		return (1);
 	}
 	numbers = len;
-	if (!mid_number(&pivot, stack->stack_b, len))
+	if (!mid_number(&pivot, stack->b, len))
 		return (0);
 	while (len != numbers / 2)
 	{
-		if (stack->stack_b[0] >= pivot && len--)
+		if (stack->b[0] >= pivot && len--)
 			pa(stack, 0);
 		else if (++count_r)
 			rb(stack, 0);
 	}
 	while (numbers / 2 != stack->l_stack_b && count_r--)
-		rb(stack, 0);
+		rrb(stack, 0);
 	return (quicksort_a(stack, numbers / 2 + numbers % 2, 0)
 		&& quicksort_b(stack, numbers / 2, 0));
 }
