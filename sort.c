@@ -6,11 +6,11 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 12:17:15 by amargiac          #+#    #+#             */
-/*   Updated: 2023/04/04 10:56:27 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/04/04 14:41:58 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/Users/amargiac/Desktop/Push_swap/push_swap.h"
+#include "/Users/amargiac/Desktop/push_swap/push_swap.h"
 
 void	temporary_sort(int *stack_tmp, int size)
 {
@@ -63,7 +63,6 @@ void	size3_stack_a(t_stack *stack)
 		sa(stack, 0);
 	}
 }
-
 
 int	sort(t_stack *stack, int size)
 {

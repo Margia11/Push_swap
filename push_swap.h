@@ -6,7 +6,7 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 10:29:52 by amargiac          #+#    #+#             */
-/*   Updated: 2023/04/04 10:08:29 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/04/06 11:59:05 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
-# include "/Users/amargiac/Desktop/Push_swap/ft_printf/ft_printf.h"
-# include "/Users/amargiac/Desktop/Push_swap/libft/libft.h"
+# include "/Users/amargiac/Desktop/push_swap/ft_printf/ft_printf.h"
+# include "/Users/amargiac/Desktop/push_swap/libft/libft.h"
 
 typedef struct s_stack {
 	int	*a;
@@ -52,4 +52,5 @@ int			mid_number(int *pivot, int *pile, int size);
 int			sort_3_b(t_stack *stack, int len);
 int			quicksort_a(t_stack *stack, int len, int count_r);
 int			quicksort_b(t_stack *stack, int len, int count_r);
+int			ft_strcmp(const char *s1, const char *s2);
 #endif

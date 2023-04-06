@@ -6,19 +6,23 @@
 #    By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/16 14:41:45 by amargiac          #+#    #+#              #
-#    Updated: 2023/03/28 11:29:24 by amargiac         ###   ########.fr        #
+#    Updated: 2023/04/06 12:03:07 by amargiac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
+
+CHECKER = checker
 
 SRC_1 = pushswap.c
 
 SRC_2 = error.c checks.c move/push.c move/reverse.c move/rotate.c move/swap.c \
 		sort.c quicksort.c
 
-OBJ_1 = $(SRC_1.c=.o)
-OBJ_1 = $(SRC_2.c=.o)
+SRC_3 = bonus/checker.c
+
+OBJ_1 = $(SRC_2:.c=.o)
+OBJ_2 = $(SRC_3:.c=.o)
 
 CC = gcc
 FLAG = -Wall -Werror -Wextra -g
@@ -33,7 +37,7 @@ all :
 	$(CC) $(FLAGS) $(SRC_1) $(SRC_2) $(LIBRARY) -o $(NAME)
 
 bonus : all
-	$(CC) $(FLAGS)  $(SRC_2) $(LIBRARY) -o
+	$(CC) $(FLAGS) $(SRC_2) $(SRC_3) $(LIBRARY) -o $(CHECKER)
 
 clean:
 		make clean -C $(LIBFT)
@@ -45,5 +49,6 @@ fclean: clean
 		make fclean -C $(LIBFT)
 		make fclean -C $(FTPRINTF)
 	rm -f $(NAME)
+	rm -f $(CHECKER)
 
 re: fclean all clean

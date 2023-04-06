@@ -6,11 +6,11 @@
 /*   By: amargiac <amargiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 11:40:19 by amargiac          #+#    #+#             */
-/*   Updated: 2023/04/04 10:09:07 by amargiac         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:32:50 by amargiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/Users/amargiac/Desktop/Push_swap/push_swap.h"
+#include "/Users/amargiac/Desktop/push_swap/push_swap.h"
 
 void	quicksort_stacks(t_stack *stack, int len)
 {
